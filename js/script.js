@@ -9,7 +9,7 @@ const pointsCounter = document.getElementById('points-counter');
 
 // FUNZIONI
 const  createCell = content =>{
-    const cell = document.createElement('div'); 
+    const cell = document.createElement('div');
     cell.innerText = content;
     cell.className = 'cell';
     grid.appendChild(cell);
@@ -22,23 +22,21 @@ let min = 1;
 let max= 100;
 
 
-const generateRandomNumber = (min,max) => {
+function generateRandomNumber (min,max) {
    const randomNumber = Math.floor(Math.random() * (max +1 - min) + min);
   return randomNumber
 }
 
 const bombNumbers = [];
 
-for (let i=0; i<16; i++) {
-  let number;
-  do {
-    number = generateRandomNumber(1,max);
-
-  } while (bombNumbers.includes(number));
+while (bombNumbers.length < 16) {
+   let number = generateRandomNumber(min,max)
+   if(!bombNumbers.includes(number)) {
     bombNumbers.push(number);
+   }
 }
-console.log(number);
-generateRandomNumber(number);
+
+console.log(bombNumbers)
 
 //- Impostazioni della griglia
 const row = 10;
@@ -56,15 +54,15 @@ for (i = 1; i <= totalCells; i++) {
     let newCell = createCell(i);
 
     newCell.addEventListener('click',function(increment){
-        
+
         if (newCell.classList.contains('clicked')){
-            
+
             return;
         }else{
             this.classList.add('clicked');
             console.log("Cell: " + this.innerText);
         }
-        
+
         userPoints++;
         pointsCounter.innerText = `Punteggio: ${userPoints}`;
     } )
