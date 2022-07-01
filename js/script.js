@@ -1,3 +1,9 @@
+// - Recupero gli elementi DOM
+const grid = document.getElementById('grid');
+const button = document.getElementById('button');
+const pointsCounter = document.getElementById('points-counter');
+
+
 //MILESTONE 2
 //Al click del bottone play, vengono generate 100 celle in 10 righe da 10 celle ciascuna.
 
@@ -11,10 +17,14 @@ const  createCell = content =>{
     return cell;
 }
 
-// - Recupero l'elemento griglia e il bottone dal DOM
-const grid = document.getElementById('grid');
-const button = document.getElementById('button');
-const pointsCounter = document.getElementById('points-counter');
+let min = 1;
+let max= 100;
+
+const getRandomNumber = (min,max,) => Math.floor(Math.random() * (max - min + 1) + min);
+
+for (i= 0; i < 16; i++){
+    console.log(getRandomNumber);
+}
 
 //- Impostazioni della griglia
 const row = 10;
