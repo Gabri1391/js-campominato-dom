@@ -24,7 +24,8 @@ const totalCells = row * cells;
 let userPoints = 0;
 
 
-// -Ciclo for per creare 100 celle all'interno della griglia
+// -Ciclo for per creare 100 celle all'interno della griglia più
+//incremento del punteggio in base a quante celle clicco
 
 for (i = 1; i <= totalCells; i++) {
     let newCell = createCell(i);
