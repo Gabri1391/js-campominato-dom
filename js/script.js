@@ -38,6 +38,7 @@ for (let i=0; i<16; i++) {
     bombNumbers.push(number);
 }
 console.log(number);
+generateRandomNumber(number);
 
 //- Impostazioni della griglia
 const row = 10;
