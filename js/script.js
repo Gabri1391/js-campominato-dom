@@ -17,14 +17,27 @@ const  createCell = content =>{
     return cell;
 }
 
+//Generiamo 16 numeri random compresi tra 1 e il numero massimo delle celle
 let min = 1;
 let max= 100;
 
-const getRandomNumber = (min,max,) => Math.floor(Math.random() * (max - min + 1) + min);
 
-for (i= 0; i < 16; i++){
-    console.log(getRandomNumber);
+const generateRandomNumber = (min,max) => {
+   const randomNumber = Math.floor(Math.random() * (max +1 - min) + min);
+  return randomNumber
 }
+
+const bombNumbers = [];
+
+for (let i=0; i<16; i++) {
+  let number;
+  do {
+    number = generateRandomNumber(1,max);
+
+  } while (bombNumbers.includes(number));
+    bombNumbers.push(number);
+}
+console.log(number);
 
 //- Impostazioni della griglia
 const row = 10;
@@ -32,6 +45,7 @@ const cells = 10;
 const totalCells = row * cells;
 
 let userPoints = 0;
+
 
 
 // -Ciclo for per creare 100 celle all'interno della griglia più
