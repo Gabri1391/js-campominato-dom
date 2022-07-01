@@ -1,0 +1,30 @@
+/* CSS STYLE */
+
+#grid{
+    width: 500px;
+    height: 500px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightgreen;
+    display: none;
+    cursor: pointer;
+}
+
+#grid.active{
+    display: flex;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+#grid .cell{
+    width: 10%;
+    height: 10%;
+    border: 1px solid white;
+}
+
+.clicked{
+    background-color: cyan;
+    cursor: not-allowed;
+}
