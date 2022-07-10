@@ -9,7 +9,7 @@ const pointsCounter = document.getElementById('points-counter');
  * @param {Number[]} bombs l'array contenente le bombe
  * @returns{boolean} se è game over (true) oppure false
  */
-function checkGameOver(cell, bombs){
+function checkGameOver(cell, bombs,userPoints,winningPoints){
     const cellNumber = parseInt(cell.innerText);
     //controllo se ha beccato una bomba
     if(bombs.includes (cellNumber)){
@@ -18,7 +18,11 @@ function checkGameOver(cell, bombs){
         return true;
     }else{
         cell.classList.add('safe');
-        console.log('Ottimo! Continua così!')
+        if(userPoints + 1 === winningPoints) {
+            console.log("COMPLIMENTI HAI VINTO! IL TUO PUNTEGGIO E':" + winningPoints)
+            return true;
+        }
+        
         return false;
     }
 
@@ -55,6 +59,7 @@ function play (){
     let userPoints = 0;
     const totalBombs = 16;
     //Punteggio finale
+    const winningPoints = 100 - totalBombs;
    
 
     //- Impostazioni della griglia
@@ -92,7 +97,7 @@ function play (){
         console.log(i)
 
         //check se la casella è una bomba o no
-        const isGameOver = checkGameOver (this, bombs);
+        const isGameOver = checkGameOver (this, bombs,userPoints,winningPoints);
         if(!isGameOver)userPoints++;
     })
 
