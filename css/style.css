@@ -1,19 +1,22 @@
 /* CSS STYLE */
-
+body{
+    font-family: sans-serif;
+    background-color: lightgreen;
+}
 #grid{
     width: 500px;
     height: 500px;
     margin: 50px auto;
     display: flex;
     flex-wrap: wrap;
-    background-color: lightgreen;
-    display: none;
+    background-color: white;
     cursor: pointer;
+    display: none;
 }
 
 #grid.active{
     display: flex;
-    color: white;
+    color: black;
     text-align: center;
     line-height: 50px;
 }
@@ -21,10 +24,17 @@
 #grid .cell{
     width: 10%;
     height: 10%;
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 .clicked{
-    background-color: cyan;
     cursor: not-allowed;
+}
+
+.bomb{
+    background-color: red;
+} 
+
+.safe{
+    background-color: dodgerblue;
 }
