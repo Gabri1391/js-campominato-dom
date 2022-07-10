@@ -29,6 +29,7 @@ body{
 
 .clicked{
     cursor: not-allowed;
+    color: white;
 }
 
 .bomb{
@@ -37,4 +38,11 @@ body{
 
 .safe{
     background-color: dodgerblue;
+}
+
+#points-counter{
+    font-weight: bold;
+    font-size: 2rem;
+    color: dodgerblue;
+    text-shadow: 2px 2px 2px violet;
 }

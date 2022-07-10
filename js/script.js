@@ -3,6 +3,27 @@ const button = document.getElementById('button');
 const pointsCounter = document.getElementById('points-counter');
 
 // FUNZIONI
+function gameOver(userPoints,hasWon,bombs){
+    
+    //Rendo incliccabili le celle a fine partita
+    const cells = document.querySelectorAll('cell');
+
+    for( let i = 0; i < cells.length; i++){
+        const cellNumber = parseInt(cells[i].innerText);
+         
+        cells[i].classList.add('clicked', className);
+        
+        let className = bombs.includes(cellNumber) ? 'bomb' : 'safe';
+
+    }
+    
+    //Costruzione messaggio finale
+    let message = hasWon ? 'COMPLIMENTI! HAI VINTO!' : 'Hai perso!'
+    message += `Hai totalizzato ${userPoints} punti.`
+
+    pointsCounter.innerHTML = message;
+}
+
 /**
  * 
  * @param {Node} cell la cella cliccata
@@ -10,16 +31,19 @@ const pointsCounter = document.getElementById('points-counter');
  * @returns{boolean} se è game over (true) oppure false
  */
 function checkGameOver(cell, bombs,userPoints,winningPoints){
+
     const cellNumber = parseInt(cell.innerText);
     //controllo se ha beccato una bomba
     if(bombs.includes (cellNumber)){
         cell.classList.add('bomb');
         console.log('Hai perso! Hai preso una bomba!')
+        gameOver(userPoints,false,bombs);
         return true;
     }else{
         cell.classList.add('safe');
         if(userPoints + 1 === winningPoints) {
             console.log("COMPLIMENTI HAI VINTO! IL TUO PUNTEGGIO E':" + winningPoints)
+            gameOver(winningPoints,true,bombs);
             return true;
         }
         
@@ -54,6 +78,7 @@ function play (){
     
     //Svuoto la gliglia a ogni click
     grid.innerHTML = '';
+    pointsCounter.innerHTML = '';
     
     //fase preparatoria
     let userPoints = 0;
@@ -104,7 +129,6 @@ function play (){
     //appendo la cella alla griglia
     grid.appendChild(cell);
    }
-
 
 };
 
